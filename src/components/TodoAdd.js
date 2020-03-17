@@ -1,12 +1,17 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { Button, TextField } from "@material-ui/core";
 import { useForm } from "react-hook-form";
+import { addTodo } from "../redux/actions";
 
 export const TodoAdd = () => {
-  const { handleSubmit, register, errors } = useForm();
+  const { handleSubmit, register, reset, errors } = useForm();
+  const dispatch = useDispatch();
 
-  const onSubmit = values => {
-    console.log(values);
+  const onSubmit = formData => {
+    const action = addTodo(formData);
+    dispatch(action);
+    reset();
   };
 
   return (
