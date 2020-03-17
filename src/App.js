@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Button, TextField } from "@material-ui/core";
+import "./App.scss";
 
-function App() {
+const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Bourne Todo Application</h1>
+      <section className="todo-add">
+        <form className="form-task-add" noValidate autoComplete="off">
+          <div className="textfield">
+            <TextField
+              label="New Task"
+              placeholder="What needs to get done?"
+              variant="outlined"
+              fullWidth
+            />
+          </div>
+          <Button variant="outlined" color="primary">
+            Add
+          </Button>
+        </form>
+      </section>
+      <section className="todo-list">Todo List</section>
     </div>
   );
-}
+};
 
 export default App;
