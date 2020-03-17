@@ -8,8 +8,12 @@ const App = () => {
   return (
     <div className="App">
       <Header />
-      <TodoAdd />
-      <TodoList />
+      <section className="todo-add">
+        <TodoAdd />
+      </section>
+      <section className="todo-list">
+        <TodoList />
+      </section>
     </div>
   );
 };

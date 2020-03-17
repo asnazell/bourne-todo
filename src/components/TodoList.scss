@@ -13,6 +13,16 @@
     padding: 10px;
     border-bottom: solid 1px #ccc;
 
+    .todo-task,
+    .todo-add,
+    .todo-max,
+    .todo-done {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
     .todo-task {
       flex: 1;
       display: flex;
@@ -20,15 +30,22 @@
       align-items: center;
     }
 
+    .todo-add,
+    .todo-max,
     .todo-done {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100px;
+      width: 90px;
       margin-left: 10px;
     }
   }
 
-  .todo-item {
+  .btn-add-subtask {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    &:focus {
+      outline: 0;
+    }
   }
 }
