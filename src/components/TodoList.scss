@@ -1,0 +1,34 @@
+.todo-list {
+  display: flex;
+  flex-direction: column;
+
+  .todo-header {
+    font-weight: 600;
+  }
+
+  .todo-header,
+  .todo-item {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    border-bottom: solid 1px #ccc;
+
+    .todo-task {
+      flex: 1;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    .todo-done {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100px;
+      margin-left: 10px;
+    }
+  }
+
+  .todo-item {
+  }
+}
