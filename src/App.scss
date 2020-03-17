@@ -1,0 +1,28 @@
+.App {
+  margin: 20px;
+
+  section {
+    margin-bottom: 30px;
+  }
+
+  h1 {
+    font-family: "Mukta", sans-serif;
+    font-size: 42px;
+    font-weight: 400;
+    margin: 0 0 20px;
+  }
+
+  .form-task-add {
+    width: 100%;
+    display: flex;
+
+    .textfield {
+      flex: 1;
+    }
+    button {
+      max-width: 100px;
+      margin-left: 20px;
+      flex: 1;
+    }
+  }
+}
