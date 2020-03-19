@@ -4,9 +4,12 @@ import { Checkbox } from "@material-ui/core";
 import { MdAdd, MdClear } from "react-icons/md";
 import { completeTodo } from "../redux/actions";
 import { TodoAdd } from "./TodoAdd";
+import { getSortedTodos } from "./TodoList.utils";
 import "./TodoList.scss";
 
 const TodoItems = ({ todos }) => {
+  const sorted = getSortedTodos(todos);
+
   return (
     <React.Fragment>
       <div className="todo-header">
@@ -15,14 +18,14 @@ const TodoItems = ({ todos }) => {
         <div className="todo-max">Max</div>
         <div className="todo-done">Done?</div>
       </div>
-      {todos.map(todo => (
+      {sorted.map(todo => (
         <TodoItem todo={todo} key={todo.id} />
       ))}
     </React.Fragment>
   );
 };
 
-const TodoItem = ({ todo }) => {
+const TodoItem = ({ todo, level = 0 }) => {
   const dispatch = useDispatch();
   const [showAddSubtask, setShowAddSubtask] = useState(false);
 
@@ -35,9 +38,14 @@ const TodoItem = ({ todo }) => {
     setShowAddSubtask(!showAddSubtask);
   };
 
+  const newLevel = todo.subtasks.length > 0 ? level + 1 : level;
+
   return (
     <React.Fragment>
       <div className="todo-item">
+        {[...Array(level)].map((level, index) => (
+          <div className="todo-indent" key={index} />
+        ))}
         <div className="todo-task">{todo.task}</div>
         <div className="todo-add">
           <button
@@ -57,6 +65,9 @@ const TodoItem = ({ todo }) => {
           <Checkbox color="primary" onChange={handleChangeCheckbox} />
         </div>
       </div>
+      {todo.subtasks.map(subtask => (
+        <TodoItem todo={subtask} key={subtask.id} level={newLevel} />
+      ))}
       {showAddSubtask && (
         <AddSubtask parentId={todo.id} setShowAddSubtask={setShowAddSubtask} />
       )}
@@ -74,8 +85,6 @@ const AddSubtask = ({ parentId, setShowAddSubtask }) => {
 
 export const TodoList = () => {
   const todos = useSelector(state => state.todos);
-
-  console.log("todos", todos);
 
   return todos.length ? (
     <TodoItems todos={todos} />

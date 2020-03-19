@@ -13,6 +13,10 @@
     padding: 10px;
     border-bottom: solid 1px #ccc;
 
+    .todo-indent {
+      width: 20px;
+    }
+
     .todo-task,
     .todo-add,
     .todo-max,
